@@ -1,0 +1,77 @@
+.nb {
+	text-align: center;
+	color: #ffffff;
+    background-color:#282828;
+    height: 60px;
+}
+
+.logo {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+}
+
+.main {
+    padding-top: 30px;
+}
+
+.MuiPaper-root.MuiCard-root.card{
+    background-color: #1f1f1f1f;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.MuiCardContent-root:last-child {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 0px !important;
+}
+
+
+@media (min-width: 992px) {
+	.sidebar {
+		background-color: #282828;
+		height: 100vh;
+		position: sticky;
+        top: 0;
+	}
+
+	#right{background-color:#161616;}
+	#left{background-color:#282828;}
+}
+
+
+.livetitle {
+    color: #ffffff;
+    word-break: break-word;
+}
+
+.livetitle:link{color: #ffff; text-decoration: none;}
+.livetitle:visited{color: #ffff; text-decoration: none;}
+.livetitle:active{color: #ffff; text-decoration: none;}
+.livetitle:hover{color: #ffff; text-decoration: none;}
+
+.MuiPaper-root.MuiCard-root.card.MuiPaper-elevation1.MuiPaper-rounded{
+    border: 0px;
+    box-shadow: none;
+}
+
+.comment{
+	color: #8899a6;
+}
+
+.MuiChip-label.MuiChip-labelSmall {
+    font-weight: bolder;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.MuiList-root.MuiMenu-list {
+    background-color:#282828;
+    color: #ffffff;
+}
+
+.MuiSelect-root.MuiSelect-select.MuiSelect-selectMenu {
+    background-color:#282828;
+    color: #ffffff;
+}
