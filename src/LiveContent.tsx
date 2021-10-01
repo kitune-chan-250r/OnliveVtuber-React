@@ -1,13 +1,9 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {Navbar, Nav, Container} from 'react-bootstrap';
 import Iframe from 'react-iframe';
 import { Grid } from '@material-ui/core';
-import Logo from './img/logo.png';
 import './css/main.css';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Badge from '@material-ui/core/Badge';
 import Chip from '@material-ui/core/Chip';
 
 interface Props {
