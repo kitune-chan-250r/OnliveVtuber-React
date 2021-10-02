@@ -84,6 +84,15 @@ export const OnliveVtuber = () => {
         }
     }
 
+    useEffect(() => {
+        const timer = setInterval(() => {
+            toggleContent ? getLiveData() : getReminderData();
+        }, 10000);
+        return () => {
+            clearInterval(timer);
+        };
+    }, []);
+
     const handleChange = (event:any) => {
         setFilter(event.target.value);
     };
