@@ -1,49 +1,59 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {Navbar, Nav, Container} from 'react-bootstrap';
-import Iframe from 'react-iframe';
 import { Grid } from '@material-ui/core';
-import Logo from './img/logo.png';
 import './css/main.css';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Badge from '@material-ui/core/Badge';
-import Chip from '@material-ui/core/Chip';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
 
-export const SideBarContent = () => {
+interface Props {
+    toggleContent: boolean,
+    filter: string,
+    setContentFilter: (filter: string) => void,
+    setToggleContent: (content: boolean) => void,
+}
+
+export const SideBarContent = (props : Props) => {
     const [filterItems, setFilterItems] = useState(["ホロライブ", "にじさんじ", "あにまーれ", ".Live", "ハニスト", "Re:Act", "ENTUM", "ホロスターズ"]);
+
+    const handleChange = (event:any) => {
+        props.setContentFilter(event.target.value);
+    };
 
     return (
         <Fragment>
+            <Grid 
+                container
+                direction="column"
+                alignItems="center"
+                spacing={4}
+            >
+                <Grid xs={1}>
 
-
-            <Grid container >
-                <Grid item xs={3}>
+                </Grid>
+                <Grid container item justifyContent="center">
+                    <Select labelId="production-filter-label" id="production-filter" style={{width:'80%'}} onChange={handleChange} value={props.filter}>
+                        <MenuItem value=""><em>Clear</em></MenuItem>
+                        {filterItems.map((item) => (
+                            <MenuItem key={item} value={"?pr=" + item}>{item}</MenuItem>
+                        ))}
+                        <MenuItem value="?pr=other">その他/個人勢</MenuItem>
+                    </Select>
+                </Grid>
+                
+                <Grid item >
+                    <div>
+                        <a
+                            style={{
+                                width: '70%',
+                                color: 'white',
+                            }} 
+                            onClick={() => props.setToggleContent(!props.toggleContent)}
+                        >
+                            {props.toggleContent ? "これから放送予定の枠はこちら" : "放送中の枠はこちら"}
+                        </a>
+                    </div>
                 
                 </Grid>
-                <Grid item xs={6}>
                 
-                </Grid>
-                <Grid item xs={3}>
-                    <Grid container>
-                            <Grid item xs={2}>
-
-                            </Grid>
-                            <Grid item xs={8}>
-                                
-                                
-                            </Grid>
-                            <Grid item xs={2}>
-
-                            </Grid>
-
-                        </Grid>
-                
-                </Grid>
             </Grid>
         </Fragment>
     )
