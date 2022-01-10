@@ -4,6 +4,17 @@ import './css/main.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 interface Props {
     toggleContent: boolean,
     filter: string,
@@ -30,7 +41,15 @@ export const SideBarContent = (props : Props) => {
 
                 </Grid>
                 <Grid container item justifyContent="center">
-                    <Select labelId="production-filter-label" id="production-filter" style={{width:'80%'}} onChange={handleChange} value={props.filter}>
+                    <Select 
+                        labelId="production-filter-label" 
+                        className="production-filter" 
+                        id="production-filter" 
+                        style={{width:'80%'}} 
+                        onChange={handleChange} 
+                        value={props.filter}
+                        MenuProps={MenuProps}
+                    >
                         <MenuItem value=""><em>Clear</em></MenuItem>
                         {filterItems.map((item) => (
                             <MenuItem key={item} value={"?pr=" + item}>{item}</MenuItem>
@@ -38,7 +57,7 @@ export const SideBarContent = (props : Props) => {
                         <MenuItem value="?pr=other">その他/個人勢</MenuItem>
                     </Select>
                 </Grid>
-                
+
                 <Grid item >
                     <div>
                         <a
