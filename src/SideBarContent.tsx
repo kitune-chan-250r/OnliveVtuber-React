@@ -33,9 +33,8 @@ export const SideBarContent = (props : Props) => {
         <Fragment>
             <Box
                 sx={{ display: { xs: 'block', sm: 'none', md: 'block' } }}
+                style={{width:'100%'}}
             >
-
-            
                 <Grid 
                     container
                     direction="column"

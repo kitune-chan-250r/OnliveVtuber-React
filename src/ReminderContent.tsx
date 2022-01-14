@@ -42,7 +42,7 @@ export const ReminderContent = (props: Props) => {
         return (
            <Card className="card">
                 <CardContent className="content" style={{maxWidth: 800}}>
-                    <Grid container spacing={1} style={{minWidth: 800}}>
+                    <Grid container spacing={1} >
                         <Grid item xs={12} sm={12} md={12} lg={6}>
                             <Iframe
                                 url={src}
