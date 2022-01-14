@@ -5,6 +5,7 @@ import './css/main.css';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Chip from '@material-ui/core/Chip';
+import { createTheme, useTheme } from '@material-ui/core/styles';
 
 interface Props {
     uid: string,
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export const ReminderContent = (props: Props) => {
+    const classes = useTheme();
     var temp = props.live_url.toString();
     temp = temp.toString().replace("https://www.youtube.com/watch?v=", "");
     var src = "https://www.youtube.com/embed/" + temp;
@@ -39,9 +41,9 @@ export const ReminderContent = (props: Props) => {
     const drawContent = useMemo(() => {
         return (
            <Card className="card">
-                <CardContent className="content">
-                    <Grid container spacing={1}>
-                        <Grid item lg={6}>
+                <CardContent className="content" style={{maxWidth: 800}}>
+                    <Grid container spacing={1} style={{minWidth: 800}}>
+                        <Grid item xs={12} sm={12} md={12} lg={6}>
                             <Iframe
                                 url={src}
                                 width="352px"
@@ -51,7 +53,7 @@ export const ReminderContent = (props: Props) => {
                                 frameBorder={0}
                             />
                         </Grid>
-                        <Grid item lg={6}>
+                        <Grid item xs={12} sm={12} md={12} lg={6} style={{maxWidth:350}}>
                             <h5>
                                 <a className="livetitle" href={props.live_url} target="_blank">
                                     { props.live_title }
