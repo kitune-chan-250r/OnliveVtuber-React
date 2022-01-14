@@ -12,6 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { useMemo } from 'react';
 import ReminderContent from './ReminderContent';
+import SideBarContent from './SideBarContent';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
@@ -45,7 +46,6 @@ export const OnliveVtuber = () => {
         }
     ])
     const [filter, setFilter] = useState("");
-    const [filterItems, setFilterItems] = useState(["ホロライブ", "にじさんじ", "あにまーれ", ".Live", "ハニスト", "Re:Act", "ENTUM", "ホロスターズ"]);
     const [toggleContent, setToggleContent] = useState(true);
 
     useEffect(() => {
@@ -84,9 +84,19 @@ export const OnliveVtuber = () => {
         }
     }
 
-    const handleChange = (event:any) => {
-        setFilter(event.target.value);
-    };
+    const setContentFilter = (filter: string) => {
+        setFilter(filter);
+    }
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setFilter(filter);
+            toggleContent ? getLiveData() : getReminderData();
+        }, 10000);
+        return () => {
+            clearInterval(timer);
+        };
+    }, [filter]);
 
     const drawLive = useMemo(() => {
         return(
@@ -151,37 +161,32 @@ export const OnliveVtuber = () => {
                     {drawReminder}
                 </Grid>
                 
-                <Grid item md={3} className="sidebar" id="right" justify='center'>
-                    <FormControl 
-                        style={{
-                            position: 'fixed',
-                            top: 90,
-                            width: '70%',
-                            left: '77%'
-                        }} 
-                    >
-                        <InputLabel id="production-filter-label">Filter</InputLabel>
-                        <Select labelId="production-filter-label" id="production-filter" style={{width:'30%'}} onChange={handleChange} value={filter}>
+                <Grid container item md={3} className="sidebar" id="right" justifyContent="center">
+                    {/* <div style={{width:'100%', justifyContent:'center'}}>
+                        <Select labelId="production-filter-label" id="production-filter" style={{width:'80%',height:'5%', top:100}} onChange={handleChange} value={filter}>
                             <MenuItem value=""><em>Clear</em></MenuItem>
                             {filterItems.map((item) => (
                                 <MenuItem key={item} value={"?pr=" + item}>{item}</MenuItem>
                             ))}
                             <MenuItem value="?pr=other">その他/個人勢</MenuItem>
                         </Select>
-                    </FormControl> 
-                    <a
-                        style={{
-                            position: 'fixed',
-                            top: 155,
-                            width: '70%',
-                            left: '82%',
-                            color: 'white',
-                        }} 
-                        onClick={() => setToggleContent(!toggleContent)}
-                    >
-                        {toggleContent ? "これから放送予定の枠はこちら" : "放送中の枠はこちら"}
-                    </a>
-                     
+                        <div style={{top: 140,}}>
+                            <a
+                            style={{
+                                // position: 'fixed',
+                                width: '70%',
+                                // height: 20,
+                                // left: '82%',
+                                color: 'white',
+                            }} 
+                                onClick={() => setToggleContent(!toggleContent)}
+                            >
+                                {toggleContent ? "これから放送予定の枠はこちら" : "放送中の枠はこちら"}
+                            </a>
+                        </div>
+                    
+                    </div> */}
+                    <SideBarContent toggleContent={toggleContent} filter={filter} setContentFilter={setContentFilter} setToggleContent={setToggleContent}/>
                 </Grid>
             </Grid>
         </Fragment>

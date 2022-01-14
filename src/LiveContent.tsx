@@ -36,9 +36,9 @@ export const LiveContent = (props: Props) => {
 
     return (
         <Card className="card">
-            <CardContent className="content">
-                <Grid container spacing={1}>
-                    <Grid item lg={6}>
+            <CardContent className="content" style={{maxWidth: 800}}> 
+                <Grid container spacing={1} >
+                    <Grid item xs={12} sm={12} md={12} lg={6}>
                         <Iframe
                             url={src}
                             width="352px"
@@ -48,7 +48,7 @@ export const LiveContent = (props: Props) => {
                             frameBorder={0}
                         />
                     </Grid>
-                    <Grid item lg={6}>
+                    <Grid item xs={12} sm={12} md={12} lg={6} style={{maxWidth:350}}>
                         <h5>
                             <a className="livetitle" href={props.live_url} target="_blank">
                                 { props.live_title }
