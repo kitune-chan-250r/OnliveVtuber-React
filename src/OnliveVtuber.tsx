@@ -170,6 +170,7 @@ export const OnliveVtuber = () => {
                             ))}
                             <MenuItem value="?pr=other">その他/個人勢</MenuItem>
                         </Select>
+                        
                         <div style={{top: 140,}}>
                             <a
                             style={{
