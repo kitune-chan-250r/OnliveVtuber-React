@@ -3,11 +3,6 @@
   "name": "OnliveVtuber",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
       "src": "icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png"
@@ -23,7 +18,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "https://vlsapi-web.herokuapp.com/?pwa=true",
+  "start_url": "https://vlsapi-twitterbot.herokuapp.com/?pwa=true",
   "background_color": "#1f1f1f",
   "description": "VTuberの生放送一覧を手軽に確認できるアプリケーション",
   "display": "standalone",
