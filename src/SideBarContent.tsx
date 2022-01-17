@@ -31,10 +31,10 @@ export const SideBarContent = (props : Props) => {
 
     return (
         <Fragment>
-            <Box
+            {/* <Box
                 sx={{ display: { xs: 'block', sm: 'none', md: 'block' } }}
                 style={{width:'100%'}}
-            >
+            > */}
                 <Grid 
                     container
                     direction="column"
@@ -44,15 +44,16 @@ export const SideBarContent = (props : Props) => {
                         margin: 0,
                     }}
                 >
-                    <Grid xs={1}>
+                    <Grid item xs={1}>
 
                     </Grid>
+            
                     <Grid container item justifyContent="center" >
                         <Select 
                             labelId="production-filter-label" 
                             className="production-filter" 
                             id="production-filter" 
-                            style={{width:'80%', textAlign:'center'}} 
+                            style={{width:'70%', textAlign:'center'}} 
                             onChange={handleChange} 
                             value={props.filter}
                             MenuProps={MenuProps}
@@ -82,7 +83,7 @@ export const SideBarContent = (props : Props) => {
                     </Grid>
                     
                 </Grid>
-            </Box>
+            {/* </Box> */}
         </Fragment>
     )
 }
