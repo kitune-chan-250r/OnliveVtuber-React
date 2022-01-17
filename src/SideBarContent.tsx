@@ -53,7 +53,7 @@ export const SideBarContent = (props : Props) => {
                             labelId="production-filter-label" 
                             className="production-filter" 
                             id="production-filter" 
-                            style={{width:'70%', textAlign:'center'}} 
+                            style={{width:'80%', textAlign:'center'}} 
                             onChange={handleChange} 
                             value={props.filter}
                             MenuProps={MenuProps}
